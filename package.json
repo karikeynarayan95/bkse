@@ -3,7 +3,7 @@
   , "version": "0.9.1"
   , "private": true
   , "dependencies": {
-      "express": "2.5.8"
+      "express": "4.17.1"
     , "jade": "0.27.x"
     , "connect-flash": "0.1.x"
     , "async": "0.1.x"
