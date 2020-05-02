@@ -1,0 +1,72 @@
+extends ../layout
+
+block content
+  .container
+    .page-header 
+      h2 Checkout: Customer Details 
+    .row-fluid
+      .span12
+        form(method="POST", action="/checkout/customer")
+          .row-fluid
+            .span9
+              .row
+                .span12.form-horizontal
+                  legend Contact 
+                  .control-group
+                    label.control-label(for="email") Email
+                    .controls
+                      input(type="text", id="email", name="email", value="#{locals.order.shipTo.email}")
+                  .control-group
+                    label.control-label(for="conf_email") Confirm Email 
+                    .controls
+                      input(type="text", id="conf_email")
+              .row
+                .span12.form-horizontal
+                  legend Shipping
+                  .control-group
+                    label.control-label(for="name") Name
+                    .controls
+                      input(type="text", id="name", name="name", value="#{locals.order.shipTo.name}")
+                  .control-group
+                    label.control-label(for="address") Address 
+                    .controls
+                      input(type="text", id="address", name="address", value="#{locals.order.shipTo.address}")
+                  .control-group
+                    label.control-label(for="postcode") Postcode 
+                    .controls
+                      input(type="text", id="postcode", name="postCode", value="#{locals.order.shipTo.postCode}")
+                  .control-group
+                    label.control-label(for="state") State 
+                    .controls
+                      select(id="state", name="state")
+                        - var states = {nsw: "New South Wales", nt: "Northern Terrritory", qld: "Queensland", sa: "South Australia", tas: "Tasmania", vic: "Victoria", wa: "Western Australia"};
+                        - console.log(states)
+                        each staKey, staName in states
+                          if staKey == locals.order.shipTo.state
+                            option(value="#{staKey}", selected="selected") #{staName}
+                          else
+                            option(value="#{staKey}") #{staName}
+              .row
+                .span12.form-actions
+                  a.btn.btn-large.btn-info(href="/cart") &lArr; Back
+                  input.btn.btn-large.pull-right.btn-success(type="submit", value="Payment Details &rArr;")
+            .span3.well
+              legend Checkout Status
+              table.table
+                tr.info
+                  td: i.icon-edit
+                  td Customer Details
+                tr
+                  td: i.icon-cog
+                  td Payment Details
+                tr
+                  td: i.icon-cog
+                  td Confirm Order 
+  
+
+
+
+
+            
+
+      

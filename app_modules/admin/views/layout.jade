@@ -1,0 +1,47 @@
+!!!
+html
+  head
+    title= title
+    script(type='text/javascript', src='/js/jquery-1.8.0.min.js')
+    link(rel='stylesheet', href='/bootstrap/css/bootstrap.min.css')
+    link(rel='stylesheet', href='/bootstrap/css/bootstrap-responsive.min.css')
+    //link(rel='stylesheet', href='/bootstrap/css/navbar-fixed-top-hack.css')
+    link(rel='stylesheet', href='/css/admin.css')
+    script(type='text/javascript', src='/bootstrap/js/bootstrap.min.js')
+    style(type="text/css")
+      body { padding-top: 60px; }
+      @media (max-width: 979px) { body { padding-top: 0px; } }
+  body
+    .navbar.navbar-inverse.navbar-fixed-top
+      .navbar-inner
+        .container
+          a.brand(href="/") Rylon Admin
+          .nav-collapse
+            ul.nav
+              li: a(href="/data") Data-Management
+          .nav-collapse.pull-right
+            ul.nav
+              if (locals.admin)
+                li 
+                  #account.navbar-text
+                    | Account 
+                    | (
+                    a(href='/logout') logout
+                    | )
+              else
+                li 
+                  #account.navbar-text
+                    | Account (
+                    a(href='/login') login
+                    )
+ 
+            // form.navbar-search.pull-right
+                input.search.query(type="text", placeHolder="User, Order, etc..")
+    - if(!messages) { var messages = [] };
+    - if(messages.length)
+      .container
+        .row
+          != partial('alert_item', {collection: alerts, as: 'alerts'})
+     
+    block content
+

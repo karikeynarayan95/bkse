@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  .container
+    .span12
+        legend
+          p Search "#{query}"
+        ul 
+          if (products.length)
+            each prod in products
+              li 
+                a(href="/product/#{prod.id}") #{prod.title}
+                | : #{prod.author}
+          else 
+            p No results found.
+          
+          

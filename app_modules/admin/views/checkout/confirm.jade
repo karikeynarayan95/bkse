@@ -1,0 +1,71 @@
+extends ../layout
+
+block content
+  .container
+    .page-header 
+      h2 Checkout: Confirm Your Order
+    .row-fluid
+      .span12
+        form(method="POST", action="/checkout/confirm")
+          .row-fluid
+            .span9
+              .row
+                .span6
+                  legend Ship To
+                  p #{locals.order.shipTo.email}
+                  p #{locals.order.shipTo.name}
+                  p #{locals.order.shipTo.address}
+                  p #{locals.order.shipTo.state}, #{locals.order.shipTo.postCode}
+                .span6
+                  legend Bill To
+                  p Name: #{locals.order.billTo.name}
+                  p Type: #{locals.order.billTo.brand}
+                  p Card: xxxx-xxxx-xxxx-#{locals.order.billTo.cardNo.slice(-4)}
+                  p Expiry: #{locals.order.billTo.expiry}
+              .row
+                .span12
+                  legend Order 
+                  table.table
+                    thead
+                      tr
+                        th Title
+                        th Author
+                        th Quantity
+                        th Price
+                    tbody
+                      each op in cart.orderProducts 
+                        tr
+                          td #{op.product.title}
+                          td #{op.product.author}
+                          td #{op.quantity}
+                          td $#{op.price.toFixed(2)}
+                      tr
+                        td(colspan="3") 
+                          span.pull-right 
+                            b Total:
+                        td 
+                          b $#{cart.price.toFixed(2)}
+              .row
+                .span12.form-actions
+                  a.btn.btn-large.btn-info(href="/checkout/payment") &lArr; Back
+                  input.btn.btn-large.pull-right.btn-success(type="submit", value="Confirm Order")
+            .span3.well
+              legend Checkout Status
+              table.table
+                tr
+                  td: i.icon-ok
+                  td Customer Details
+                tr
+                  td: i.icon-ok
+                  td Payment Details
+                tr.info
+                  td: i.icon-edit
+                  td Confirm Order 
+  
+
+
+
+
+            
+
+      

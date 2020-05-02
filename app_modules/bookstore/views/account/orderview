@@ -1,0 +1,29 @@
+ table.table
+                            thead
+                              tr
+                                th Title
+                                th Author
+                                th Quantity
+                                th Price
+                            tbody
+                              each op in ord.cart.orderProducts 
+                                tr
+                                  td #{op.product.title}
+                                  td #{op.product.author}
+                                  td #{op.quantity}
+                                  td $#{op.price.toFixed(2)}
+                              tr
+                                td(colspan="3") 
+                                  span.pull-right 
+                                    b Total:
+                                td 
+                                  b $#{ord.cart.price.toFixed(2)}
+
+                              tr
+                                td(colspan="3") 
+                                  span.pull-right 
+                                    b Total:
+                                td 
+                                  b $#{ord.cart.price.toFixed(2)}
+  
+

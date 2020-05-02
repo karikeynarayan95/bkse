@@ -1,0 +1,73 @@
+extends ../layout
+
+block content
+  .container
+    .row-fluid
+      .page-header 
+        h2 Account
+    .row-fluid
+      .span12
+        form(method="POST", action="/checkout/confirm")
+          .row-fluid
+            .span12
+              .row-fluid
+                .span4
+                  legend 
+                    | Your Details &nbsp;
+                    a.btn.btn-info.btn-small(href="/account/edit") Edit
+                  table.table-condensed.table-hover
+                    tr
+                      td Username: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+                      td #{locals.customer.username} 
+                    tr
+                      td Email: 
+                      td #{locals.customer.email}
+                    tr
+                      td Password: 
+                      td ******
+                    tr
+                      td &nbsp;
+                      td &nbsp;
+                    tr
+                      td Name: 
+                      td #{locals.customer.firstname} #{locals.customer.lastname}
+                    tr
+                      td Address: 
+                      td #{locals.customer.address}
+                    tr
+                      td &nbsp;
+                      td #{locals.customer.state} #{locals.customer.postcode}
+                .span8
+                  legend Order History
+                  if !locals.order_history.length
+                    p No orders on this account.
+                  else
+                    table.table
+                      thead
+                        tr
+                          th Receipt 
+                          th Order Date 
+                          th Status 
+                          th Ship Date
+                          th Price
+                      tbody
+                        each ord in locals.order_history
+                          tr
+                            td #{ord.receipt}
+                            td #{ord.created.toDateString()}
+                            td #{ord.status}
+                            if (ord.shipped)
+                              td #{ord.shipped}
+                            else 
+                              td N/A
+                            td $#{ord.cart.price.toFixed(2)}
+  
+
+
+
+
+            
+
+      

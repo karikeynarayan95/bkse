@@ -1,0 +1,39 @@
+extends layout
+
+block content
+  .container
+    .row
+      .span12
+        .container
+          .row
+            .span12
+              .row
+                legend Shopping Cart
+          if !cart_size
+            .row
+              p No products in cart.
+          else
+            .row
+              form(method="POST", action="/cart/update")
+                table.table.table-hover
+                  thead
+                    tr
+                      td Title
+                      td Author
+                      td Quantity
+                      td: input.btn.btn-small(type="submit", value="Update Qty")
+                      td Price
+                      td Options 
+                  tbody
+                    each item in products 
+                      tr
+                        td #{item.product.title}
+                        td #{item.product.author}
+                        td #{item.quantity}
+                        td: input.span1(name="#{item.product.id}", type="text", value="#{item.quantity}")
+                        td 
+                          | $
+                          = item.product.price * item.quantity
+                        td: a(href="/cart/remove/#{item.product.id}") remove
+                br
+                a.btn.btn-large.btn-danger.pull-right(href="/checkout") Checkout

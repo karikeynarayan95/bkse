@@ -1,0 +1,59 @@
+extends ../layout
+
+block content
+  .container
+    .row-fluid
+      .page-header 
+        h2 Checkout: Payment Details 
+    .row-fluid
+      .span12
+          form(method="POST", action="/checkout/payment")
+            .row-fluid
+              .span9
+                .row-fluid
+                  .span12.form-horizontal
+                    legend Card Details 
+                    .control-group
+                      label.control-label(for="brand") Card Type 
+                      .controls
+                        select(id="brand", name="brand", value="#{locals.billTo.brand}")
+                          option(value="visa") Visa
+                          option(value="mastercard") Mastercard 
+                    .control-group
+                      label.control-label(for="name") Cardholder Name
+                      .controls
+                        input(type="text", id="name", name="name", value="#{locals.billTo.name}")
+                    .control-group
+                      label.control-label(for="cardNo") Card Number 
+                      .controls
+                        input(type="text", id="cardNo", name="cardNo", value="#{locals.billTo.cardNo}")
+                    .control-group
+                      label.control-label(for="expiry") Expiry 
+                      .controls
+                        .input-append
+                          input.span6(type="text", id="expiry", name="expiry", value="#{locals.billTo.expiry}")
+                          span.add-on &nbsp;mm/yy&nbsp;
+                .row-fluid
+                  .span12.form-actions
+                    a.btn.btn-large.btn-info(href="/checkout/customer") &lArr; Back
+                    input.btn.btn-large.pull-right.btn-success(type="submit", value="Confirm Order &rArr;")
+              .span3.well
+                legend Checkout Status
+                table.table
+                  tr
+                    td: i.icon-ok
+                    td Customer Details
+                  tr.info
+                    td: i.icon-edit
+                    td Payment Details
+                  tr
+                    td: i.icon-cog
+                    td Confirm Order 
+    
+
+
+
+
+            
+
+      

@@ -1,0 +1,59 @@
+extends ../layout
+
+block content
+  .container
+    .row
+      .page-header 
+        h2 Edit Details 
+    .row-fluid
+      .span12
+        form(method="POST", action="/account/edit")
+          .row-fluid
+            .span9
+              .row
+                .span12.form-horizontal
+                  legend Customer Info
+                  .control-group
+                    label.control-label(for="email") Email
+                    .controls
+                      input(type="text", id="email", name="email", value="#{locals.customer.email}")
+                  .control-group
+                    label.control-label(for="firstname") First Name 
+                    .controls
+                      input(type="text", id="firstname", name="firstname", value="#{locals.customer.firstname}")
+                  .control-group
+                    label.control-label(for="lastname") Last Name 
+                    .controls
+                      input(type="text", id="lastname", name="lastname", value="#{locals.customer.lastname}")
+                  .control-group
+                    label.control-label(for="password") Password 
+                    .controls
+                      input(type="password", id="password", name="password")
+              .row
+                .span12.form-horizontal
+                  legend Defaults 
+                  .control-group
+                    label.control-label(for="address") Address 
+                    .controls
+                      input(type="text", id="address", name="address", value="#{locals.customer.address}")
+                  .control-group
+                    label.control-label(for="state") State 
+                    .controls
+                      input(type="text", id="state", name="state", value="#{locals.customer.state}")
+                  .control-group
+                    label.control-label(for="postcode") Postcode 
+                    .controls
+                      input(type="text", id="postcode", name="postcode", value="#{locals.customer.postcode}")
+              .row
+                .span12.form-actions
+                  a.btn(href="/account") Cancel 
+                  &nbsp; &nbsp; &nbsp;
+                  input.btn.btn-success(type="submit", value="Update")
+  
+
+
+
+
+            
+
+      

@@ -1,0 +1,24 @@
+extends ../layout
+
+block content
+  .container
+    .row-fluid
+      .page-header
+        h2 Checkout: Login
+      .span8.offset2
+        .row
+          .span6.well
+            form(method="post", action="/login")
+              legend Checkout with Account 
+              input.span12(type="text", name="user", placeHolder="Username")
+              input.span12(type="password", name="pass", placeHolder="Password")
+              button.btn.btn-block.btn-large.btn-success(type="submit") Log in
+            p 
+              | Or, 
+              input.btn.btn-block.btn-large.btn-info(href="/account/new") Create an account
+          .span6.well
+            form(method="post", action="/checkout-guest")
+              legend Checkout as Guest 
+              a.btn.btn-block.btn-large(href="/checkout/customer") Guest Checkout 
+
+

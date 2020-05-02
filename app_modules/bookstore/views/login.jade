@@ -1,0 +1,16 @@
+extends ./layout
+
+block content
+  .container
+    .row-fluid
+      .span4.offset4
+        .row
+          .span12.well
+            form(method="post", action="/login")
+              legend Customer Login
+              input.span12(type="text", name="user", placeHolder="Username")
+              input.span12(type="password", name="pass", placeHolder="Password")
+              button.btn.btn-block.btn-large.btn-success(type="submit") Log in
+            p 
+              | Or, 
+              a.btn.btn-block.btn-large.btn-info(href="/account/login") Create an account

@@ -1,0 +1,40 @@
+extends layout
+
+block content
+  .container
+    .row
+      .span12
+        .container
+          .row
+            .page-header 
+              h2 Shopping Cart
+          if !cart.size
+            .row
+              p No products in cart.
+          else
+            .row
+              form(method="POST", action="/cart/update")
+                table.table.table-hover
+                  thead
+                    tr
+                      th Title
+                      th Author
+                      th Quantity
+                      th: input.btn.btn-mini.btn-inverse(type="submit", value="Update Qty")
+                      th Price
+                      th Options 
+                  tbody
+                    each op in cart.orderProducts 
+                      tr
+                        td #{op.product.title}
+                        td #{op.product.author}
+                        td #{op.quantity}
+                        td: input.span1(name="#{op.product.id}", type="text", value="#{op.quantity}")
+                        td $#{op.price.toFixed(2)}
+                        td: a(href="/cart/remove/#{op.product.id}") remove
+            .row
+              br
+              p.pull-right
+                span.well
+                  a.btn.btn-success(href="/checkout") Checkout
+                  | &nbsp;&nbsp;Total: $#{cart.price.toFixed(2)}

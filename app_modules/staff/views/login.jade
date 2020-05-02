@@ -1,0 +1,18 @@
+extends ./layout
+
+block content
+  .container
+    .row
+      .span6.offset3.well
+        form(method="post", action="/login")
+          legend Staff Login
+          input.span6(type="text", name="user", placeHolder="Username")
+          input.span6(type="password", name="pass", placeHolder="Password")
+          button.btn.btn-block.btn-info(type="submit") Log in
+      //.span6
+        .hero-unit
+          h1 Where am I?
+          p &nbsp;
+          a.btn.btn-large.btn-primary(href="/") Take me to the bookstore
+
+

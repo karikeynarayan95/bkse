@@ -1,0 +1,14 @@
+
+mixin valinput(name, label, data, errs)
+  if errs[name]
+    .control-group.error
+      label.control-label(for="#{name}") #{label} 
+      .controls
+        input(type="text", id="#{name}", Name="#{name}", value="")
+        span.help-inline #{errs[name].type}
+  else
+    = console.log(data);
+    .control-group
+      label.control-label(for="#{name}") #{label} 
+      .controls
+        input(type="text", id="#{name}", Name="#{name}", value="#{data[name]}")

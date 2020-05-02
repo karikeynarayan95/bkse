@@ -1,0 +1,28 @@
+extends layout
+
+block content
+  .container
+    .row
+      .span12
+        .container
+          .row
+            .span12
+              .row
+                .span4
+                  legend 
+                    p #{product.title}
+          .row
+            .span6
+              ul
+                span: | isbn: #{product.isbn} 
+                span #{product.author} 
+            .span6
+              .well
+                form(method="POST", action="/cart/add")
+                  span Quantity:
+                  .input-prepend.input-append
+                    input.span1(type="text", name="quantity")
+                    input(type="hidden", name="id", value="#{product.id}")
+                    code.muted.add-on (#{product.stock} available)
+                  input.btn.btn-danger(type="submit", value="Add to Cart")
+        
