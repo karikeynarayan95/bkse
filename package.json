@@ -7,7 +7,7 @@
     , "jade": "0.27.x"
     , "connect-flash": "0.1.x"
     , "async": "0.1.x"
-    , "mongoose": "3.0.x"
+    , "mongoose": "5.9.x"
     , "mocha": "1.6.x"
     , "should": "1.2.x"
     , "validator": "0.4.12"
